@@ -1,6 +1,8 @@
 let transactions = [];
 let myChart;
 
+console.log(transactions)
+
 fetch("/api/transaction")
   .then(response => {
     return response.json();
@@ -17,6 +19,7 @@ fetch("/api/transaction")
 function populateTotal() {
   // reduce transaction amounts to a single total value
   let total = transactions.reduce((total, t) => {
+    console.log(transactions);
     return total + parseInt(t.value);
   }, 0);
 
@@ -82,6 +85,8 @@ function sendTransaction(isAdding) {
   let nameEl = document.querySelector("#t-name");
   let amountEl = document.querySelector("#t-amount");
   let errorEl = document.querySelector(".form .error");
+
+  console.log(transactions);
 
   // validate form
   if (nameEl.value === "" || amountEl.value === "") {
